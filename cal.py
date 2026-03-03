@@ -24,26 +24,36 @@ class Calculator:
 
 
 def main():
-    first_number = float(input("Enter first number: "))
-    operation = input("Enter the operation (+, -, *, /): ")
-    second_number = float(input("Enter second number: "))
+    while True:
+        print("\n---- Simple OOPS Calculator ----")
+        print("Enter 'exit' to stop the calculator")
 
-    calculator = Calculator(first_number, operation, second_number)
+        first_input = input("Enter first number: ")
+        if first_input.lower() == "exit":
+            print("Calculator Closed")
+            break
 
-    if calculator.operation == '+':
-        result = calculator.add()
+        first_number = float(first_input)
+    
+        operation = input("Enter the operation (+, -, *, /): ")
+        second_number = float(input("Enter second number: "))
 
-    elif calculator.operation == '-':
-        result = calculator.subtract()
+        calculator = Calculator(first_number, operation, second_number)
 
-    elif calculator.operation == '*':
-        result = calculator.multiply()
+        if calculator.operation == '+':
+            result = calculator.add()
 
-    elif calculator.operation == '/':
-        try:
-            result = calculator.divide()
-        except ValueError as e:
-            print(e)
+        elif calculator.operation == '-':
+            result = calculator.subtract()
+
+        elif calculator.operation == '*':
+            result = calculator.multiply()
+
+        elif calculator.operation == '/':
+            try:
+                result = calculator.divide()
+            except ValueError as e:
+                print(e)
             return
 
     else:
